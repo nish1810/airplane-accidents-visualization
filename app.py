@@ -6,13 +6,12 @@ from sqlalchemy import create_engine, func
 import pandas as pd
 
 from flask import Flask, jsonify, render_template
-from config import pwd
+
 import json
 
 
-rds_connection_string = f"postgres:{pwd}@localhost:5432/Proj2_AirlineAccidents"
-engine = create_engine(f'postgresql://{rds_connection_string}')
-
+connection_string = "postgres:postgres@localhost:5432/Proj2_AirplaneAccidents"
+engine = create_engine('postgresql://postgres:password@localhost/Proj2_AirplaneAccidents')
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
@@ -21,8 +20,18 @@ Base.prepare(engine, reflect=True)
 # Save reference to the table
 airplane_events = Base.classes.airplane_events_clean
 
-
 app = Flask(__name__)
+app.config['DEBUG'] = True
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+
+
+
+# Flask Routes to render HTML
+@app.route("/")
+def home():
+    """Return the homepage."""
+    return render_template("index.html")
 
 
 @app.route("/api")
@@ -50,7 +59,35 @@ def Accidents():
      accident_dict = accident_df.to_dict()
     # accident_dict = "I worked"
      return jsonify(accident_dict)
+@app.route("/weather_impact")
+def Weather():
+    fatality_flight_phase = engine.execute('''SELECT flight_phase, SUM(uninjured) as UNINJURED, SUM(FATALITIES) as FATALITIES, SUM(injuries) as INJURIES 
+                            FROM airplane_events_clean
+                            GROUP BY flight_phase
+                            ORDER BY flight_phase''')
+    results= []
+    results = [list(row) for row in fatality_flight_phase]
+    test = []
+    for x in range(0, len(results)):
+        result_dict = {'Flight Phase':results[x][0], 'Uninjured': results[x][1], 'Injuries': results[x][3], 'Fatalities': results[x][2] }
+        test.append(result_dict)
+    return jsonify(test)
 
+@app.route("/weather_flight_impact")
+def Weather_flight_phase():
+    weather_flight_phase = engine.execute('''SELECT flight_phase, airplane_events_clean.weather_condition, SUM(FATALITIES) as FATALITIES, SUM(injuries) as INJURIES FROM airplane_events_clean
+WHERE weather_condition = 'IMC' or weather_condition = 'VMC'
+GROUP BY flight_phase, weather_condition
+ORDER BY flight_phase;''')
+    results= []
+    results = [list(row) for row in weather_flight_phase]
+    test = []
+    for x in range(0, len(results)):
+        result_dict = {'Flight Phase':results[x][0], 'Weather Condition': results[x][1], 'Fatal': results[x][2], 'Injuries': results[x][3] }
+        test.append(result_dict)
+    return jsonify(test)
+
+    # accident_dict = "I worked"
 
 
 if __name__ == '__main__':
