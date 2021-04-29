@@ -33,6 +33,19 @@ def home():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/flight-phase")
+def flight_phase():
+    """Return the flight phase page."""
+    return render_template("flight-phase.html")
+
+@app.route("/flight-phase-weather")
+def flight_phase_weather():
+    """Return the flight phase weather page."""
+    return render_template("flight-phase-weather.html")
+@app.route("/data-table")
+def data_table():
+    return render_template("data-table.html")
+
 
 @app.route("/api")
 def Accidents():
@@ -59,6 +72,7 @@ def Accidents():
      accident_dict = accident_df.to_dict()
     # accident_dict = "I worked"
      return jsonify(accident_dict)
+
 @app.route("/weather_impact")
 def Weather():
     fatality_flight_phase = engine.execute('''SELECT flight_phase, SUM(uninjured) as UNINJURED, SUM(FATALITIES) as FATALITIES, SUM(injuries) as INJURIES 
@@ -69,7 +83,7 @@ def Weather():
     results = [list(row) for row in fatality_flight_phase]
     test = []
     for x in range(0, len(results)):
-        result_dict = {'Flight Phase':results[x][0], 'Uninjured': results[x][1], 'Injuries': results[x][3], 'Fatalities': results[x][2] }
+        result_dict = {'FlightPhase':results[x][0], 'Uninjured': results[x][1], 'Injuries': results[x][3], 'Fatalities': results[x][2] }
         test.append(result_dict)
     return jsonify(test)
 
@@ -83,12 +97,25 @@ ORDER BY flight_phase;''')
     results = [list(row) for row in weather_flight_phase]
     test = []
     for x in range(0, len(results)):
-        result_dict = {'Flight Phase':results[x][0], 'Weather Condition': results[x][1], 'Fatal': results[x][2], 'Injuries': results[x][3] }
+        result_dict = {'FlightPhase':results[x][0], 'WeatherCondition': results[x][1], 'Fatal': results[x][2], 'Injuries': results[x][3] }
         test.append(result_dict)
     return jsonify(test)
 
     # accident_dict = "I worked"
 
+@app.route("/data")
+def data():
+    data = engine.execute('''SELECT make, air_carrier, investigation_type, event_date, location, country, airport_name, injuries, fatalities, uninjured
+FROM airplane_events_clean
+ORDER BY event_date DESC LIMIT 2000;''')
+    results= []
+    results = [list(row) for row in data]
+    test = []
+    for x in range(0, len(results)):
+        result_dict = {'Make':results[x][0], 'Air_carrier': results[x][1], 'Investigation_type': results[x][2], 'Date': results[x][3], 'Location': results[x][4], 'Country': results[x][5],
+                       'Airport' : results[x][6], 'injuries': results[x][7], 'Fatalities' : results[x][8], 'Uninjured': results[x][9]}
+        test.append(result_dict)
+    return jsonify(test)
 
 if __name__ == '__main__':
     app.run(debug=True)

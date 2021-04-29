@@ -1,0 +1,537 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: "Inter UI",sans-serif;
+  background-color: #fbfcfd;
+  color: #4a4a4a;
+  overflow-wrap: break-word;
+}
+
+/* ----NAV START---- */
+
+.navbar {
+  padding: 5px;
+  margin: 0;
+  background: rgb(22, 80, 138);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.navbar-brand{
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* This CSS styles the olympic icon in the navbar */
+.nav-olympic {
+  position: absolute;
+  bottom: 5px;
+  left: 115px;
+  width: 35px;
+  color: white;
+}
+
+/* Logo hover state */
+#logo:hover {
+  /* Visual */
+  opacity: 0.7;
+}
+
+.navbar-right-custom {
+  /* Box-model */
+  padding-top: 6px;
+  padding-right: 20px;
+
+  /* Typography */
+  font-weight: lighter;
+}
+
+/* Nav element hover state */
+.navbar-default .navbar-nav > li > a:hover {
+  color: #4aaaa5;
+}
+
+/* Media query for nav */
+@media only screen and (max-width: 767px) {
+  .navbar-header {
+    background-color: #4aaaa5;
+  }
+
+  #logo {
+    width: 100%;
+
+    /* Box-model */
+    height: 60px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+
+    /* Positioning */
+    margin-left: 0;
+    font-family: Georgia, Times, "Times New Roman", serif;
+
+    /* Typography */
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+
+    /* Visual */
+    background: #4aaaa5;
+  }
+}
+
+/* -----NAV END---- */
+
+
+/* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 130px;
+  overflow: auto;
+}
+.jumbotron{
+  color: white;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 700px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-image: url("../images/olympicRings.jpg");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero h1 {
+  color: white;
+  margin-top: 200px;
+  font-size: 0.1rem;
+  animation: title 1.2s forwards linear;
+}
+
+.hero p {
+  font-size: 3rem;
+  color: yellow;
+  opacity: 0;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
+/*.barChartRace{
+
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-left: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+*/
+
+
+.btn{
+  font-weight: 600;
+  font-size: 16px;
+}
+.button{
+  margin-bottom: 15px;
+}
+
+
+/*
+.card {
+
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px -5px rgba(247, 224, 224, 0.808);
+
+  margin-left: 60px;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  color: rgb(4, 6, 7);
+  fill: #777777;
+
+}
+
+.card-header{
+  width: 100%;
+  background-color: rgb(250, 242, 242);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+th {
+  font-size: bold;
+  text-align: left;
+}
+
+text{
+  font-family: "Inter UI",sans-serif;
+  font-size: 18px;
+}
+
+text.title{
+  font-weight: 550;
+  font-size: 24px;
+  fill:  rgb(22, 80, 138);
+  fill: steelblue;
+
+}
+
+text.subTitle{
+  font-weight: 500;
+  font-size: 18px;
+  fill: steelblue;
+  opacity: 0.8
+}
+
+text.caption{
+  font-weight: 400;
+  font-size: 14px;
+  fill: dodgerblue;
+  padding-right: 10px;
+  opacity: 0.6;
+}
+
+text.label{
+  font-weight: 600;
+  font-size: 17px;
+  font-family: Ubuntu, sans-serif;
+}
+
+text.valueLabel{
+ font-weight: 300;
+}
+
+text.yearText{
+  font-size: 64px;
+  font-weight: 700;
+  opacity: 0.35;
+  fill:dodgerblue
+}
+
+.tick text {
+  fill: #777777;
+}
+
+.xAxis .tick:nth-child(2) text {
+  text-anchor: start;
+}
+
+.tick line {
+  shape-rendering: CrispEdges;
+  stroke: #dddddd;
+}
+
+.tick line.origin{
+  stroke: #aaaaaa;
+}
+
+path.domain{
+  display: none;
+}
+*/
+
+/* The footer is positioned at the bottom of the page */
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100px;
+  background: rgb(22, 80, 138);
+}
+
+/* The code styles the text at the bottom of the footer */
+.footer > .bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  background:steelblue;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Adding styles to the aside and filter form */
+.olympic-form {
+  margin-top: 50px;
+}
+
+.filters .panel-body {
+  padding: 0;
+}
+
+.filters {
+  margin-top: 10px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  color: #8e979f;
+  outline: none;
+}
+
+#table-area th {
+  text-align: left;
+}
+
+#table-area th:first-child,
+#table-area th:nth-child(2),
+#table-area th:nth-child(6) {
+  min-width: 70px;
+}
+
+/* input placeholder color changes */
+.form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #8e979f;
+  font-size: 14px;
+}
+
+.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #8e979f;
+}
+
+.form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #8e979f;
+}
+
+.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #8e979f;
+}
+
+.filters .panel-body {
+  padding: 0;
+}
+
+.filters {
+  margin-top: 10px;
+}
+
+
+.loader {
+  margin-top: 50px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+.list-group-item {
+  background-color:  rgb(250, 242, 242);
+}
+
+.panel{
+  background-color:  rgb(250, 242, 242);
+}
+.panel-heading {
+  background-color:rgb(41, 122, 189);
+}
+.panel-footer {
+  background-color:rgba(25, 122, 201, 0.884);
+}
+
+.panel-default>.panel-heading {
+  background-color: rgba(25, 122, 201, 0.884);
+  color: white;
+  font-weight: 600;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+background-color: rgba(245, 236, 236, 0.918);
+}
+
+table, .table {
+  font-size: 13px;
+  font-weight: 500;
+}
+thead{
+  color: rgb(37, 111, 172);
+  font-size: 15px;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 370px;
+  overflow: auto;
+  width: 925px;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+/*Scrollbar edit in data html table
+css from https://mdbootstrap.com/docs/jquery/javascript/scroll/*/
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #95989b; 
+}
+.scrollbar-primary::-webkit-scrollbar {
+  width: 12px;
+  background-color: #e3e4e6; 
+}
+
+/* media queries which will only be activated at specific screen sizes */
+@media (max-width: 800px) {
+  #table-area td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 700px) {
+  .pagination li {
+    font-size: 0.8em;
+  }
+
+  .pagination > li > a {
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  #table-area thead {
+    display: none;
+  }
+
+  #table-area tr td:first-child {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  #table-area tr td:last-child {
+    margin-bottom: 20px;
+  }
+
+  #table-area tr td:last-child::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    content: " ";
+    background: aliceblue;
+  }
+
+  #table-area td {
+    font-size: 1.25em;
+    background-color: aliceblue;
+
+  }
+
+  #table-area tbody td {
+    display: block;
+    text-align: center;
+    background-color: aliceblue;
+
+  }
+
+  #table-area tbody td::before {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    content: attr(data-th);
+    padding-top: 10px;
+
+  }
+
+  .pagination li {
+    font-size: 0.6em;
+  }
+
+  .pagination > li > a {
+    padding: 4px 8px;
+  }
+
+  .hero h1 {
+    animation: smaller-title 1.2s forwards linear;
+  }
+}
+.my-custom-scrollbar {
+  position: relative;
+  height: 370px;
+  overflow: auto;
+  width: 925px;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+/*Scrollbar edit in data html table
+css from https://mdbootstrap.com/docs/jquery/javascript/scroll/*/
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #95989b; 
+}
+.scrollbar-primary::-webkit-scrollbar {
+  width: 12px;
+  background-color: #e3e4e6; 
+}
+
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 6.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes smaller-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 3.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
