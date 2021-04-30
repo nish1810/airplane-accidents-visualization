@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Time Based Data Analysis</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+      
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+      
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+      
+        <link rel="stylesheet" href="../static/css/sl_styles.css">
+    </head>
+    <body>
+        <!-- Start of navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid navbar-custom">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="row">
+                <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="col-xs-9 phone-nav">
+                    <a class="navbar-brand" href="/" id="logo">Aviation Accidents</a>
+                    </a>
+                </div>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right navbar-right-custom">
+
+                    <li><a href="/flight-phase">Flight Phase</a></li>
+                    <li><a href="/flight-phase-weather">Flight Phase and Weather</a></li>
+                    <li><a href="/data-table">Data</a></li>
+                    <li><a href="">Time Based</a></li>
+                </ul>
+                </div><!-- /.navbar-collapse -->
+
+            </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- End of navbar -->
+        <div class="chart-wrapper">
+            <h2>Accidents by Month of Occurrence</h2>
+            <div class="radio-options">
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="renderChart('pie')">Pie</button>
+                    <button class="btn btn-primary" onclick="renderChart('bar')">Bar</button>
+                    <button class="btn btn-primary" onclick="renderChart('column')">Column</button>
+                </div>
+            </div>
+            <div id="insert-chart"></div>
+        </div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script type="text/javascript" src="../static/js/time_based.js"></script>
+    </body>
+</html>
