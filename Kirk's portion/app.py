@@ -75,6 +75,24 @@ def Monthly():
         test.append(result_dict)
     return jsonify(test)     
 
+@app.route("/by_airport")
+def by_airport(): 
+    accidents_by_airport = engine.execute('''SELECT aec.airport_code, ac.airport_name, ac.latitude, ac.longitude, ac.city, ac.country
+                                            , count (aec.event_id) as accidents_total, sum(aec.fatalities) as fatalities_total
+                                        FROM airplane_events_clean aec
+                                        inner join airport_coordinates ac on
+                                                aec.airport_code = ac.airport_code
+                                        group by aec.airport_code, ac.airport_name, ac.latitude, ac.longitude, ac.city, ac.country
+                                        having sum(aec.fatalities) > 0''')
+    results= []
+    results = [list(row) for row in accidents_by_airport]
+    test = []
+    for x in range(0, len(results)):
+        result_dict = {'airport_code':results[x][0], 'airport_name': results[x][1], 'latitude': (str(results[x][2])), 'longitude': (str(results[x][3])), 'accidents': results[x][4], 'fatalities': results[x][5]}
+
+        test.append(result_dict)
+    return jsonify(test)
+
 
 @app.route("/weather_impact")
 def Weather():
