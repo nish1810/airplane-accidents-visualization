@@ -10,8 +10,8 @@ from flask import Flask, jsonify, render_template
 import json
 
 
-connection_string = "postgres:postgres@localhost:5432/Proj2_AirlineAccidents"
-engine = create_engine('postgresql://postgres:password@localhost/Proj2_AirlineAccidents')
+connection_string = "postgres://dcjljmuhjadozy:aea3e9718329e9b14a3bde6471ed52ef23aa3d689ad0c4c9449c005e965bb4b2@ec2-54-224-120-186.compute-1.amazonaws.com:5432/d9j3k5u5ktt8ho"
+engine = create_engine('Heroku://dcjljmuhjadozy:aea3e9718329e9b14a3bde6471ed52ef23aa3d689ad0c4c9449c005e965bb4b2@ec2-54-224-120-186.compute-1.amazonaws.com/d9j3k5u5ktt8ho')
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
